@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project</title>
+    <style>
+        body {
+            background-image: url("Voter.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            width: 300px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: #f5f5f5;
+        }
+
+        h6 {
+            margin: 0;
+            text-align: center;
+            font-size: 1em;
+            color: #428bca;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            border: 2px solid black;
+            width: 100%;
+            font-size: 1.2em;
+            background-color: #f5f5f5;
+            color: #333;
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(139, 139, 202);
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            background-color: #3071a9;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <b>Your voter id is: </b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h6>and <br> default password is <br> abc123</h6>
+                <a href="file:///C:/Users/praty/OneDrive/Desktop/mimi.html">
+                    <button>Change password</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		body {
+		    background-image: url("Voter.jpg");
+		    background-repeat: no-repeat;
+		    background-size: cover;
+		    margin: 0;
+		    padding: 0;
+		}
+
+		form {
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    padding: 20px;
+		    border: 1px solid #ccc;
+		    border-radius: 10px;
+		    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+		    width: 300px;
+		    margin: auto;
+		    margin-top: 100px;
+		    background-color: #f5f5f5;
+		}
+
+		h1 {
+		    text-align: center;
+		    font-size: 5em;
+		    margin-top: 30px;
+		    margin-bottom: 50px;
+		    color: mintcream;
+		    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+		}
+
+		label {
+		    display: block;
+		    font-size: 1.2em;
+		    margin-bottom: 15px;
+		    color: #428bca;
+		    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+		}
+
+		input[type="text"], input[type="password"] {
+		    padding: 10px;
+		    margin-bottom: 20px;
+		    border-radius: 5px;
+		    border: none;
+		    border: 2px solid black;
+		    width: 100%;
+		    font-size: 1.2em;
+		    background-color: #f5f5f5;
+		    color: #333;
+		    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+		}
+
+		input[type="submit"] {
+		    padding: 10px;
+		    border-radius: 5px;
+		    border: none;
+		    background-color: rgb(139, 139, 202);
+		    color: white;
+		    font-size: 1.2em;
+		    cursor: pointer;
+		    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+		}
+
+		input[type="submit"]:hover {
+		    background-color: #3071a9;
+		}
+
+		.error {
+		    color: red;
+		    font-size: 0.8em;
+		    margin-top: 5px;
+		    margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<label for="name">Voter's id:</label>
+		<input type="text" id="name" name="name" required><br>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required><br>
+		<label for="confirm_password">Confirm Password:</label>
+		<input type="password" id="confirm_password" name="confirm_password" required><br>
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
+
+<?php
+// Check if form has been submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Get input values
+$voter_id = $_POST["voter_id"];
+$password = $_POST["password"];
+$confirm_password = $_POST["confirm_password"];
+
+// Function to check if the password meets the requirements
+function check_password($password) {
+if (strlen($password) < 8) {
+return false;
+}
+if (!preg_match("/\d/", $password)) {
+return false;
+}
+if (!preg_match("/[A-Z]/", $password)) {
+return false;
+}
+if (!preg_match("/[a-z]/", $password)) {
+return false;
+}
+return true;
+}
+
+// Check if password meets the requirements
+if (!check_password($password)) {
+echo "Password does not meet the requirements.";
+}
+// Check if password and confirm password match
+elseif ($password != $confirm_password) {
+echo "Passwords do not match.";
+}
+// Registration successful
+else {
+echo "Registration successful!";
+}
+}
+?>
+</body>
+</html>

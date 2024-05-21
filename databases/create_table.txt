@@ -1,0 +1,81 @@
+CREATE TABLE citizenss (
+  Name VARCHAR(20) NOT NULL,
+  `Parent name` VARCHAR(20) NOT NULL,
+  DOB DATE NOT NULL,
+  C_ID VARCHAR(20) NOT NULL,
+  Gender VARCHAR(20) NOT NULL,
+  Woda VARCHAR(20) NOT NULL,
+  PRIMARY KEY (C_ID)
+);
+CREATE TABLE mayor_details (
+  Mayor_id VARCHAR(15) PRIMARY KEY,
+  Mayor_name VARCHAR(25),
+  Address VARCHAR(25)
+);
+CREATE TABLE mayor_vote_received (
+  Apple int(3),
+  Motorola int(3),
+  Samsung int(3),
+  Mi int(3),
+  Oppo int(3),
+  Nokia int(3)
+);
+CREATE TABLE president_vote_received (
+  Apple int(3),
+  Motorola int(3),
+  Samsung int(3),
+  Mi int(3),
+  Oppo int(3),
+  Nokia int(3)
+);
+
+CREATE TABLE sub_mayor_vote_received (
+  Apple int(3),
+  Motorola int(3),
+  Samsung int(3),
+  Mi int(3),
+  Oppo int(3),
+  Nokia int(3)
+);
+CREATE TABLE vice_president_vote_received (
+  Apple int(3),
+  Motorola int(3),
+  Samsung int(3),
+  Mi int(3),
+  Oppo int(3),
+  Nokia int(3)
+);
+
+CREATE TABLE voted_done_acc (
+  C_ID VARCHAR(20),
+  password VARCHAR(20),
+  Voter_ID VARCHAR(20) PRIMARY KEY
+);
+CREATE TABLE voters (
+  C_ID VARCHAR(20),
+  password VARCHAR(20),
+  Voter_ID VARCHAR(20),
+  PRIMARY KEY (Voter_ID),
+  FOREIGN KEY (C_ID) REFERENCES citizenss(C_ID)
+);
+
+
+CREATE TABLE President_details (
+  President_id VARCHAR(25) PRIMARY KEY,
+  President_name VARCHAR(25),
+  Address VARCHAR(25),
+    Party VARCHAR(10)
+);
+
+CREATE TABLE Vice_president_details (
+  Vice_president_id VARCHAR(25) PRIMARY KEY,
+  Vice_president_name VARCHAR(25),
+  Address VARCHAR(25),
+    Party VARCHAR(10)
+);
+CREATE TABLE sub_mayor_details (
+  Sub_mayor_id VARCHAR(25) PRIMARY KEY,
+  Sub_mayor_name VARCHAR(25) NOT NULL,
+  Address VARCHAR(25) NOT NULL,
+Party VARCHAR(10)
+);
